@@ -19,7 +19,34 @@ public class UnitClick : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            RaycastHit hit;
+            Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
 
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable))
+            {
+                //If we hit a clickable object
+
+                //Normal click and Shift click
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    //shift click
+                    UnitSelections.Instance.ShiftClickSelect(hit.collider.gameObject);
+                }
+                else
+                {
+                    //normal click
+                    UnitSelections.Instance.ClickSelect(hit.collider.gameObject);
+                }
+
+            }
+            else
+            {
+                //If we didn't && we are not clicking
+                if (!Input.GetKey(KeyCode.LeftShift))
+                {
+                    UnitSelections.Instance.DeselectAll();
+                }
+            }
         }
     }
 }
