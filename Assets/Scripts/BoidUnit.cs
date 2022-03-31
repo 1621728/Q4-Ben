@@ -51,7 +51,7 @@ public class BoidUnit : MonoBehaviour
         }
 
         //Follow Mouse
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && UnitSelections.Instance)
         {
             followMouse();
         }
