@@ -20,6 +20,7 @@ public class UnitDrag : MonoBehaviour
         myCam = Camera.main;
         startPosition = Vector2.zero;
         endPosition = Vector2.zero;
+        DrawVisual();
     }
 
     // Update is called once per frame
@@ -29,6 +30,7 @@ public class UnitDrag : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             startPosition = Input.mousePosition;
+            selectionBox = new Rect();
         }
 
         //when dragging
@@ -64,6 +66,32 @@ public class UnitDrag : MonoBehaviour
 
     void DrawSelection()
     {
+        //Do X calculation
+        if (Input.mousePosition.x < startPosition.x)
+        {
+            //Dragging left
+
+        }
+        else
+        {
+            //Dragging right
+
+
+        }
+
+        //Do Y calculation
+        if (Input.mousePosition.y < startPosition.y)
+        {
+            //Dragging down
+
+
+        }
+        else
+        {
+            //Dragging up
+
+
+        }
 
     }
 
