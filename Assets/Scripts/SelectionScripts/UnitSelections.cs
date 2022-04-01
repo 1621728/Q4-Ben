@@ -25,11 +25,21 @@ public class UnitSelections : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        //When RightClick
+        if (Input.GetMouseButton(1))
+        {
+            DeselectAll();
+        }
+    }
+
     public void ClickSelect(GameObject unitToAdd)
     {
         DeselectAll();
         unitsSelected.Add(unitToAdd);
         unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+        unitToAdd.GetComponent<BoidUnit>().isSelected = true;
     }
 
     public void ShiftClickSelect(GameObject unitToAdd)
@@ -38,10 +48,12 @@ public class UnitSelections : MonoBehaviour
         {
             unitsSelected.Add(unitToAdd);
             unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+            unitToAdd.GetComponent<BoidUnit>().isSelected = true;
         }
         else
         {
-            unitToAdd.transform.GetChild(0).gameObject.SetActive(false);
+            //unitToAdd.transform.GetChild(0).gameObject.SetActive(false);
+            unitToAdd.GetComponent<BoidUnit>().isSelected = false;
             unitsSelected.Remove(unitToAdd);
         }
     }
@@ -52,16 +64,19 @@ public class UnitSelections : MonoBehaviour
         {
             unitsSelected.Add(unitToAdd);
             unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+            unitToAdd.GetComponent<BoidUnit>().isSelected = true;
         }
     }
 
     public void DeselectAll()
     {
-        foreach(var unit in unitsSelected)
+        foreach (var unit in unitsSelected)
         {
             unit.transform.GetChild(0).gameObject.SetActive(false);
+            unit.GetComponent<BoidUnit>().isSelected = false;
         }
         unitsSelected.Clear();
+        
     }
 
     public void Deselect(GameObject unitToDeselect)

@@ -7,6 +7,7 @@ TagManager:
   - Clone
   - CloneDetector
   - Obstacle/Don'tCollidewthis
+  - Food
   layers:
   - Default
   - TransparentFX

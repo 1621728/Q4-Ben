@@ -27,7 +27,9 @@ public class UnitDrag : MonoBehaviour
     void Update()
     {
         //when clicked
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetMouseButtonDown(0))
         {
             startPosition = Input.mousePosition;
             selectionBox = new Rect();
@@ -48,8 +50,8 @@ public class UnitDrag : MonoBehaviour
             endPosition = Vector2.zero;
             DrawVisual();
         }
-
-
+        }
+        
     }
 
 

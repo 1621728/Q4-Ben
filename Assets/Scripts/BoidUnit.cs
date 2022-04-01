@@ -16,7 +16,8 @@ public class BoidUnit : MonoBehaviour
     public float ouchSpeed;
     public float dizzySpeed;
     public AudioSource dizzySound;
-
+    public bool isSelected;
+    public int isFed;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,8 @@ public class BoidUnit : MonoBehaviour
         
         //Get RigidBody 2D
         rb2 = GetComponent<Rigidbody2D>();
-
+       // isSelected = true;
+        isSelected = false;
     }
 
     
@@ -50,12 +52,27 @@ public class BoidUnit : MonoBehaviour
             rb2.angularVelocity = 0;
         }
 
+        //When RightClick
+        if (Input.GetMouseButton(1))
+        {
+            isSelected = false;
+        }
+
         //Follow Mouse
-        if (Input.GetMouseButton(0) && UnitSelections.Instance)
+        if (Input.GetMouseButton(0) && isSelected == true)
         {
             followMouse();
         }
         
+        //If unit is selected
+        if(isSelected == true)
+        {
+            boid.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            boid.transform.GetChild(0).gameObject.SetActive(false);
+        }
 
         //Rotate
         float rotation = rotateScale * Input.GetAxis("Horizontal");
@@ -66,12 +83,21 @@ public class BoidUnit : MonoBehaviour
         rb2.AddForce(transform.up * thrust);
 
         //Clone Power
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && isFed > 0)
         {
+            isFed--;
             Instantiate(boid);
         }
 
-
+        //outline
+        if(isFed > 0)
+        {
+            boid.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            boid.transform.GetChild(1).gameObject.SetActive(false);
+        }
 
         //Dizzy
         if (rb2.angularVelocity > dizzySpeed)
@@ -106,6 +132,18 @@ public class BoidUnit : MonoBehaviour
             Instantiate(collide, boid.transform);
             Instantiate(collideSparks, boid.transform);
 
+        }
+
+        //teamUp
+        if (collision.gameObject.tag.Equals("Clone"))
+        {
+            isSelected = true;
+        }
+
+        //Eat Food
+        if (collision.gameObject.tag.Equals("Food"))
+        {
+            isFed++;
         }
     }
 
