@@ -51,6 +51,12 @@ public class UnitDrag : MonoBehaviour
             DrawVisual();
         }
         }
+        else
+        {
+            startPosition = Vector2.zero;
+            endPosition = Vector2.zero;
+            DrawVisual();
+        }
         
     }
 

@@ -29,7 +29,7 @@ public class BoidUnit : MonoBehaviour
         isSelected = false;
     }
 
-    
+    //navigation to mouse////////////////////////////////////////
     void followMouse()
     {
         //Point to Mouse
@@ -89,8 +89,15 @@ public class BoidUnit : MonoBehaviour
             Instantiate(boid);
         }
 
+        ////Unlimited Power
+        //if (Input.GetKeyDown("space"))
+        //{
+        //    isFed--;
+        //    Instantiate(boid);
+        //}
+
         //outline
-        if(isFed > 0)
+        if (isFed > 0)
         {
             boid.transform.GetChild(1).gameObject.SetActive(true);
         }
@@ -135,7 +142,7 @@ public class BoidUnit : MonoBehaviour
         }
 
         //teamUp
-        if (collision.gameObject.tag.Equals("Clone"))
+        if (collision.gameObject.tag.Equals("Clone") && collision.gameObject.GetComponent<BoidUnit>().isSelected == true)
         {
             isSelected = true;
         }
