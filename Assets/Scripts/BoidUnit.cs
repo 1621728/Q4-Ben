@@ -18,7 +18,8 @@ public class BoidUnit : MonoBehaviour
     public AudioSource dizzySound;
     public bool isSelected;
     public int isFed;
-
+    public AudioSource hey;
+    public AudioSource hi;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,7 @@ public class BoidUnit : MonoBehaviour
         //MoveForward
         rb2.AddForce(transform.up * thrustScale);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -86,6 +88,7 @@ public class BoidUnit : MonoBehaviour
         if (Input.GetKeyDown("space") && isFed > 0)
         {
             isFed--;
+            hi.Play();
             Instantiate(boid);
         }
 
@@ -142,8 +145,9 @@ public class BoidUnit : MonoBehaviour
         }
 
         //teamUp
-        if (collision.gameObject.tag.Equals("Clone") && collision.gameObject.GetComponent<BoidUnit>().isSelected == true)
+        if (collision.gameObject.tag.Equals("Clone") && collision.gameObject.GetComponent<BoidUnit>().isSelected == true && isSelected == false)
         {
+            hi.Play();
             isSelected = true;
         }
 
