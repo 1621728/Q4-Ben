@@ -88,7 +88,6 @@ public class BoidUnit : MonoBehaviour
         if (Input.GetKeyDown("space") && isFed > 0)
         {
             isFed--;
-            hi.Play();
             Instantiate(boid);
         }
 
