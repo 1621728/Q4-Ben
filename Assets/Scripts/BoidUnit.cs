@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoidUnit : MonoBehaviour
 {
-
+    public GameObject kamera;
     public float rotateScale;
     public float thrustScale;
     private Rigidbody2D rb2;
@@ -69,6 +69,8 @@ public class BoidUnit : MonoBehaviour
         //If unit is selected
         if(isSelected == true)
         {
+            ////Camera = boid position
+            //kamera.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
             boid.transform.GetChild(0).gameObject.SetActive(true);
         }
         else

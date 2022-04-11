@@ -1795,6 +1795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0bed67d9e1226458def4310fe99235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kamera: {fileID: 519324643}
   rotateScale: 1
   thrustScale: 2
   flames: {fileID: 3071224850379977559, guid: ea49dca1011bb9b4e8122fb780908c09, type: 3}
