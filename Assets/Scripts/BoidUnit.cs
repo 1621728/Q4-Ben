@@ -76,13 +76,13 @@ public class BoidUnit : MonoBehaviour
             boid.transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        //Rotate
-        float rotation = rotateScale * Input.GetAxis("Horizontal");
-        transform.Rotate(new Vector3(0, 0, -rotation));
+        ////Rotate
+        //float rotation = rotateScale * Input.GetAxis("Horizontal");
+        //transform.Rotate(new Vector3(0, 0, -rotation));
 
-        //Move Foreward and backward
-        float thrust = thrustScale * Input.GetAxis("Vertical");
-        rb2.AddForce(transform.up * thrust);
+        ////Move Foreward and backward
+        //float thrust = thrustScale * Input.GetAxis("Vertical");
+        //rb2.AddForce(transform.up * thrust);
 
         //Clone Power
         if (Input.GetKeyDown("space") && isFed > 0)
@@ -130,6 +130,7 @@ public class BoidUnit : MonoBehaviour
         if (rb2.velocity.x > ouchSpeed)
         {
             Debug.Log("Contact!!!");
+            touch.pitch = Random.Range(0.8f, 1.3f);
             touch.Play();
             Instantiate(collide, boid.transform);
             Instantiate(collideSparks, boid.transform);
@@ -137,6 +138,7 @@ public class BoidUnit : MonoBehaviour
         if (rb2.velocity.x < -ouchSpeed)
         {
             Debug.Log("Contact!!!");
+            touch.pitch = Random.Range(0.8f, 1.3f);
             touch.Play();
             Instantiate(collide, boid.transform);
             Instantiate(collideSparks, boid.transform);
@@ -146,6 +148,7 @@ public class BoidUnit : MonoBehaviour
         //teamUp
         if (collision.gameObject.tag.Equals("Clone") && collision.gameObject.GetComponent<BoidUnit>().isSelected == true && isSelected == false)
         {
+            hi.pitch = Random.Range(0.8f, 1.3f);
             hi.Play();
             isSelected = true;
         }
