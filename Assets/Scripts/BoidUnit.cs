@@ -127,22 +127,13 @@ public class BoidUnit : MonoBehaviour
         
         
         //Collision Effects/Ouch
-        if (rb2.velocity.x > ouchSpeed)
+        if (rb2.velocity.magnitude > ouchSpeed)
         {
             Debug.Log("Contact!!!");
             touch.pitch = Random.Range(0.8f, 1.3f);
             touch.Play();
             Instantiate(collide, boid.transform);
             Instantiate(collideSparks, boid.transform);
-        }
-        if (rb2.velocity.x < -ouchSpeed)
-        {
-            Debug.Log("Contact!!!");
-            touch.pitch = Random.Range(0.8f, 1.3f);
-            touch.Play();
-            Instantiate(collide, boid.transform);
-            Instantiate(collideSparks, boid.transform);
-
         }
 
         //teamUp
