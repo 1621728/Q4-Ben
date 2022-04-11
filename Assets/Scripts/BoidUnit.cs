@@ -124,10 +124,11 @@ public class BoidUnit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        GameObject cw = collision.gameObject;
+        Rigidbody2D cwrb = cw.GetComponent<Rigidbody2D>();
         
         //Collision Effects/Ouch
-        if (rb2.velocity.magnitude > ouchSpeed)
+        if (rb2.velocity.magnitude - cwrb.velocity.magnitude > ouchSpeed)
         {
             Debug.Log("Contact!!!");
             touch.pitch = Random.Range(0.8f, 1.3f);

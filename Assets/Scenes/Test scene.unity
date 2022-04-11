@@ -1849,7 +1849,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -580
   m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
@@ -2070,6 +2070,7 @@ GameObject:
   - component: {fileID: 1868427092}
   - component: {fileID: 1868427091}
   - component: {fileID: 1868427090}
+  - component: {fileID: 1868427093}
   m_Layer: 0
   m_Name: Astroid
   m_TagString: Untagged
@@ -2211,6 +2212,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1868427093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868427089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7aef410c215824eb47daebb6f0aac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 519324643}
 --- !u!212 &1868427094
 SpriteRenderer:
   m_ObjectHideFlags: 0
